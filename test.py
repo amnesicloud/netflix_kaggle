@@ -45,7 +45,7 @@ with open(data_path, 'r') as r:
         else:
             user_ratings.append(int(line.split(',')[1]))
         if line_count % 20000 == 0:
-            print('reading file %d, line %d / %d' %(line_count, file_lines[file_num-1]))
+            print('line %d / %d' %(line_count, file_lines[file_num-1]))
 
 
 with open(user_rating_mean_output_path, 'w') as w:
