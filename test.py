@@ -2,7 +2,7 @@ import os, csv
 import numpy as np
 from mpi4py import MPI
 
-use_station = 'local'
+use_station = 'wukong'
 if use_station == 'local':
     dataset_dir = '/home/yuzhuoran/Documents/datasets'
     log_root = '/home/yuzhuoran/Documents/logs/acnn'
