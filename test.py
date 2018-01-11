@@ -38,7 +38,7 @@ for file_num in range(1,5):
             if ':' in line:
                 continue
             else:
-                user_ratings.update(int(line.split(',')[1]))
+                user_ratings.add(int(line.split(',')[1]))
             if line_count % 50000 == 0:
                 print('line %d / %d' %(line_count, file_lines[file_num-1]), len(user_ratings))
 
