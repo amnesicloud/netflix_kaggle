@@ -43,7 +43,7 @@ for file_num in range(1,5):
                     user_ratings = [0, 0, 0, 0, 0]
                 user_id = int(line.split(':')[0])
             else:
-                user_ratings[int(line.split(',')[1])] += 1
+                user_ratings[int(line.split(',')[1])-1] += 1
             if line_count % 50000 == 0:
                 print('line %d / %d' %(line_count, file_lines[file_num-1]))
 
