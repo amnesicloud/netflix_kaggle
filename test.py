@@ -26,33 +26,22 @@ data_dir_path = os.path.join(dataset_dir, 'netflix-prize-data')
 # data_paths = [data_path1, data_path2, data_path3, data_path4]
 file_lines = [24058263, 26982302,22605786, 26851926]
 
-
+user_ratings = set()
 # data_path = os.path.join(data_dir_path, 'combined_data_sample.txt')
 for file_num in range(1,5):
     data_path = os.path.join(data_dir_path, 'combined_data_%d.txt' % file_num)
     user_rating_mean_output_path = os.path.join(data_dir_path, 'user_rating_means%d.csv' % file_num)
-    user_rating_mean_dict = {}
-    user_ratings = []
     line_count = 0
     with open(data_path, 'r') as r:
         for line in r:
             line_count += 1
             if ':' in line:
-                if not len(user_ratings) == 0:
-                    rating_mean = np.mean(user_ratings)
-                    user_rating_mean_dict[user_id] = rating_mean
-                user_id = int(line.split(':')[0])
+                continue
             else:
-                user_ratings.append(int(line.split(',')[1]))
-            if line_count % 20000 == 0:
-                print('line %d / %d' %(line_count, file_lines[file_num-1]))
+                user_ratings.update(int(line.split(',')[1]))
+            if line_count % 50000 == 0:
+                print('line %d / %d' %(line_count, file_lines[file_num-1]), len(user_ratings))
 
+    print(user_ratings)
+print(user_ratings)
 
-    with open(user_rating_mean_output_path, 'w') as w:
-        csvw = csv.writer(w)
-        user_count = 0
-        for user_id in user_rating_mean_dict:
-            user_count += 1
-            csvw.writerow([user_id, user_rating_mean_dict[user_id]])
-            if user_count % 1000 == 0:
-                print('finished writing user %d / %d' % (user_count, len(user_rating_mean_dict)))
