@@ -30,7 +30,7 @@ file_lines = [24058263, 26982302,22605786, 26851926]
 # data_path = os.path.join(data_dir_path, 'combined_data_sample.txt')
 for file_num in range(1,5):
     data_path = os.path.join(data_dir_path, 'combined_data_%d.txt' % file_num)
-    user_rating_mean_output_path = os.path.join(data_dir_path, 'user_rating_means%d.csv' % file_num)
+    user_rating_mean_output_path = os.path.join(data_dir_path, 'user_rating_freq%d.csv' % file_num)
     user_rating_freq_dict = {}
     user_ratings = [0,0,0,0,0]
     line_count = 0
